@@ -1,0 +1,68 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: my-image-retrieval-gateway
+<<<<<<< HEAD
+  namespace: default
+=======
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+<<<<<<< HEAD
+
+
+
+
+# apiVersion: v1
+# items:
+# - apiVersion: networking.istio.io/v1alpha3
+#   kind: Gateway
+#   metadata:
+#     name: my-image-retrieval-gateway
+#     namespace: default
+#   spec:
+#     selector:
+#       istio: ingressgateway
+#     servers:
+#     - hosts:
+#       - '*'
+#       port:
+#         name: http
+#         number: 80
+#         protocol: HTTP
+
+
+
+
+# apiVersion: networking.istio.io/v1alpha3
+# kind: Gateway
+# metadata:
+#   name: my-image-retrieval-gateway
+# spec:
+#   selector:
+#     istio: ingressgateway
+#   servers:
+#   - port:
+#       number: 80
+#       name: http-my-image-retrieval-gateway
+#       protocol: HTTP
+#     hosts:
+#     - "*"
+  #   tls:
+  #     httpsRedirect: true
+  # - port:
+  #     number: 443
+  #     name: https-my-image-retrieval-gateway
+  #     protocol: HTTP
+  #   hosts:
+  #   - "*"
+=======
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261

@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-image-retrieval
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - my-image-retrieval-gateway
+  http:
+  - route:
+    - destination:
+        host: my-image-retrieval.default.svc.cluster.local
+        port:
+<<<<<<< HEAD
+          number: 80
+=======
+          number: 5000
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+        subset: base
+      weight: 50
+    - destination:
+        host: my-image-retrieval.default.svc.cluster.local
+        port:
+<<<<<<< HEAD
+          number: 80
+        subset: feature-1
+      weight: 50
+
+
+# apiVersion: networking.istio.io/v1alpha3
+# kind: VirtualService
+# metadata:
+#   name: my-image-retrieval
+# spec:
+#   hosts:
+#   - "*"
+#   gateways:
+#   - my-image-retrieval-gateway
+#   http:
+#   - route:
+#     - destination:
+#         host: my-image-retrieval-base.default.svc.cluster.local
+#         port:
+#           number: 5000
+#         subset: base
+#       weight: 50
+#     - destination:
+#         host: my-image-retrieval-feature-1.default.svc.cluster.local
+#         port:
+#           number: 5000
+#         subset: feature-1
+#       weight: 50
+=======
+          number: 5000
+        subset: feature-1
+      weight: 50
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261

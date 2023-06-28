@@ -1,0 +1,34 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>Image Embeddings:</p>
+    <ul>
+        {% for embedding in similarity %}
+            <li>{{ similarity }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Result</h1>
+    <p>text embedding: {{ text_embedding }}</p>
+    <p>image embedding: {{ image_embeddings }}</p>
+    <p>similarity: {{ similarity }}</p>
+    <!-- <p>Image Embeddings:</p>
+    <ul>
+        {% for embedding in image_embeddings %}
+            <li>{{ embedding }}</li>
+        {% endfor %}
+    </ul> -->
+</body>
+</html>

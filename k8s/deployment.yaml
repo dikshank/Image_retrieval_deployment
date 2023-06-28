@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-image-retrieval-feature-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-image-retrieval
+      version: feature-1
+  template:
+    metadata:
+      labels:
+        app: my-image-retrieval
+        version: feature-1
+    spec:
+      containers:
+      - name: my-image-retrieval
+<<<<<<< HEAD
+        image: dikshank/my_image_retrieval:v2
+=======
+        image: dikshank/my_image_retrieval:{IMAGE_TAG}
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+        ports:
+        - containerPort: 5000
+        env:
+        - name: FEATURE_1_ENABLED
+          value: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-image-retrieval-base
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-image-retrieval
+      version: base
+  template:
+    metadata:
+      labels:
+        app: my-image-retrieval
+        version: base
+    spec:
+      containers:
+      - name: my-image-retrieval
+<<<<<<< HEAD
+        image: dikshank/my_image_retrieval:v2
+=======
+        image: dikshank/my_image_retrieval:{IMAGE_TAG}
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+        ports:
+        - containerPort: 5000
+        env:
+        - name: FEATURE_1_ENABLED
+          value: "false"

@@ -1,0 +1,90 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push_docker_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+<<<<<<< HEAD
+          file : dockerfile
+          build-args: |
+            ARG1=value1
+            ARG2=value2
+          tags: dikshank/my_image_retrieval:v2
+=======
+          dockerfile: dockerfile
+          build-args: |
+            ARG1=value1
+            ARG2=value2
+          tags: dikshank/my_image_retrieval:${{ github.sha }}
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+          push: false
+
+      - name: Test the application
+        run: |
+<<<<<<< HEAD
+          # #Insert commands to run your tests here
+=======
+          # Insert commands to run your tests here
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+
+      - name: Push Docker image to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+<<<<<<< HEAD
+          file: dockerfile
+          build-args: |
+            ARG1=value1
+            ARG2=value2
+          tags: dikshank/my_image_retrieval:v2
+=======
+          dockerfile: dockerfile
+          build-args: |
+            ARG1=value1
+            ARG2=value2
+          tags: dikshank/my_image_retrieval:${{ github.sha }}
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
+          push: true
+
+  deploy_to_kubernetes:
+    needs: build_and_push_docker_image
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+
+<<<<<<< HEAD
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl kustomize k8s | kubectl apply -f -
+=======
+      - name: Replace image tag in deployment.yaml
+        run: |
+          (Get-Content k8s/deployment.yaml) -replace '{IMAGE_TAG}', '${{ github.sha }}' | Set-Content k8s/deployment.yaml
+        shell: pwsh
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl kustomize k8s | kubectl apply -f -
+>>>>>>> 5e3efbc90aefdc675cad00d380c21513a0d38261
